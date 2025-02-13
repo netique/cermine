@@ -1,15 +1,29 @@
 Package: cermine
-Title: What the Package Does (One Line, Title Case)
+Title: Scrape item-level or agreggated data for Maturita and JPZ exams by
+    CZVV
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
+    person("Jan", "Netik", , "netikja@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-3888-3203"))
 Description: What the package does (one paragraph).
-License: MIT + file LICENSE
+License: AGPL (>= 3)
+URL: https://github.com/netique/cermine,
+    https://netique.github.io/cermine/
+BugReports: https://github.com/netique/cermine/issues
+Depends: 
+    R (>= 4.4.0)
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
-URL: https://github.com/netique/cermine
-BugReports: https://github.com/netique/cermine/issues
+Imports: 
+    cli,
+    dplyr,
+    purrr (>= 1.0.0),
+    rlang,
+    rvest,
+    stringr,
+    tibble,
+    tidyr
