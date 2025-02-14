@@ -41,8 +41,8 @@ get_form_input_values <- function(form) {
 
 
 
-with_cache <- function(.f, ..., .key, .msg = NULL) {
-  if (exists(.key, envir = cache)) {
+with_cache <- function(.f, ..., .key, .msg = NULL, force = FALSE) {
+  if (!force && exists(.key, envir = cache)) {
     # cli::cli_alert_info("Returning cached results...")
     return(get(.key, envir = cache))
   }
@@ -50,8 +50,13 @@ with_cache <- function(.f, ..., .key, .msg = NULL) {
   res <- .f(...)
 
   if (!is.null(.msg)) {
-    cli::cli_progress_step(.msg)
-    }
+    cli::cli_progress_step(.msg, msg_done = paste0("Done ", tolower(.msg)))
+  }
+
+  if (be_verbose()) {
+    cli::cli_progress_step("Caching to {.val {(.key)}}...")
+  }
+
   assign(.key, res, envir = cache)
 
   res
