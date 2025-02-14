@@ -61,3 +61,9 @@ with_cache <- function(.f, ..., .key, .msg = NULL, force = FALSE) {
 
   res
 }
+
+
+
+`%||%` <- function(x, y) {
+  if (is.null(x)) y else x
+}
